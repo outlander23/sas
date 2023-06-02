@@ -30,10 +30,13 @@ public class MainGameActivity extends AppCompatActivity {
     private Button button3;
 
     private Animation buttonAnimation;
+    private Animation scoreBoxAnimation;
+    private Animation scoreTextAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main_game);
         getSupportActionBar().hide();
 
@@ -65,6 +68,14 @@ public class MainGameActivity extends AppCompatActivity {
             }
         });
 
+        // Load score box animation from XML
+        scoreBoxAnimation = AnimationUtils.loadAnimation(this, R.anim.score_box_animation);
+
+        // Load score text animation from XML
+        scoreTextAnimation = AnimationUtils.loadAnimation(this, R.anim.score_text_animation);
+
+        generateRandomNumberOfCats();
+
         // Initialize the congratulations dialog
         congratsDialog = new Dialog(this);
         congratsDialog.setContentView(R.layout.congrats_dialog);
@@ -78,9 +89,6 @@ public class MainGameActivity extends AppCompatActivity {
         button1.startAnimation(buttonAnimation);
         button2.startAnimation(buttonAnimation);
         button3.startAnimation(buttonAnimation);
-
-        generateRandomNumberOfCats();
-        updateButtonNames();
     }
 
     private void generateRandomNumberOfCats() {
@@ -112,11 +120,13 @@ public class MainGameActivity extends AppCompatActivity {
         }
 
         realNumber = numberOfCats; // Set the real number to the number of cats
-        // Print the number of cats to the console
-        System.out.println("Number of cats: " + numberOfCats);
+
+        updateButtonNames(realNumber);
+        updateScore();
+        startButtonAnimation();
     }
 
-    private void updateButtonNames() {
+    private void updateButtonNames(int realNumber) {
         int[] buttonValues = new int[3];
         buttonValues[0] = realNumber;
         buttonValues[1] = realNumber;
@@ -158,6 +168,19 @@ public class MainGameActivity extends AppCompatActivity {
             array[index] = array[i];
             array[i] = temp;
         }
+
+        boolean isCorrect = false;
+        for(int i = 0; i < 3; i++){
+            if(array[i] == realNumber){
+                isCorrect = true;
+            }
+        }
+        if(!isCorrect){
+            // set a random index to the real number
+            Random rand = new Random();
+            int index = rand.nextInt(3);
+            array[index] = realNumber;
+        }
     }
 
     public void onClickButton1(View view) {
@@ -180,7 +203,9 @@ public class MainGameActivity extends AppCompatActivity {
             // Show the congratulations dialog
             showCongratsDialog();
         } else {
+            score--;
             // Show the wrong answer dialog
+            updateScore();
             showWrongDialog();
         }
     }
@@ -199,9 +224,7 @@ public class MainGameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 congratsDialog.dismiss();
                 generateRandomNumberOfCats();
-                updateButtonNames();
-                updateScore();
-                startButtonAnimation();
+
             }
         });
     }
@@ -224,6 +247,18 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
     private void updateScore() {
+        // Get the score TextView
+        final TextView scoreTextView = findViewById(R.id.score_text_view);
+
+//        // Animate the score box
+//        Animation scoreBoxAnimation = AnimationUtils.loadAnimation(this, R.anim.score_box_animation);
+//        scoreTextView.startAnimation(scoreBoxAnimation);
+////
+//        // Animate the score text
+//        Animation scoreTextAnimation = AnimationUtils.loadAnimation(this, R.anim.score_text_animation);
+//        scoreTextView.startAnimation(scoreTextAnimation);
+
+        // Update the score value
         scoreTextView.setText("Score: " + score);
     }
 

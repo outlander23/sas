@@ -33,7 +33,9 @@ exitButton.setOnClickListener(new View.OnClickListener(){
         playButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainGameActivity.class);
+//                Intent intent = new Intent(MainActivity.this, MainGameActivity.class);
+//                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, MainMathGame.class);
                 startActivity(intent);
 
             }
