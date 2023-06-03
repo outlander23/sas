@@ -24,6 +24,7 @@ public class MainGameActivity extends AppCompatActivity {
     private Dialog congratsDialog;
     private Dialog wrongDialog;
     private GridLayout catContainer;
+
     private TextView scoreTextView;
     private Button button1;
     private Button button2;
@@ -33,9 +34,40 @@ public class MainGameActivity extends AppCompatActivity {
     private Animation scoreBoxAnimation;
     private Animation scoreTextAnimation;
 
+    // make a array of string with animal names from drawable floder
+    private String[] animalNames = {
+            "cat",
+            "dog",
+            "elephant",
+            "giraffe",
+            "lion",
+            "monkey",
+            "panda",
+            "pig",
+            "rabbit",
+            "sheep"
+    };
+    // create a array of animal images
+    private  int[] animalImages = {
+            R.drawable.cat,
+            R.drawable.dog,
+            R.drawable.elephant,
+            R.drawable.giraffe,
+            R.drawable.lion,
+            R.drawable.monkey,
+            R.drawable.panda,
+            R.drawable.pig,
+            R.drawable.rabbit,
+            R.drawable.sheep
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        // add the names on the list
+        
 
         setContentView(R.layout.activity_main_game);
         getSupportActionBar().hide();
@@ -91,6 +123,66 @@ public class MainGameActivity extends AppCompatActivity {
         button3.startAnimation(buttonAnimation);
     }
 
+
+    private  void generateRandomAnimal(){
+        catContainer.removeAllViews();
+        Random random = new Random();
+        int nums = random.nextInt(10) ;
+        // get the name of the animal
+        String animalName = animalNames[nums];
+        // get the image of the animal
+        int animalImage = animalImages[nums];
+        int cnt = 0;
+// get the screen width
+
+        int numberOfCats = random.nextInt(10) + 1; // Generate a random number between 1 and 10
+
+        int screenWidth = getResources().getDisplayMetrics().widthPixels;
+        int columnCount = screenWidth / 100; // Calculate the number of columns based on image width
+        int rowCount = (int) Math.ceil((double) numberOfCats / columnCount); // Calculate the number of rows needed
+
+        catContainer.setColumnCount(columnCount);
+        catContainer.setRowCount(rowCount);
+
+        for (int i = 0; i < numberOfCats; i++) {
+
+            ImageView catImageView = new ImageView(this);
+
+            // generate random number between 1 and size of animalImages array
+            int randomCat = random.nextInt(animalImages.length);
+            if(randomCat == nums){
+                cnt++;
+            }
+            catImageView.setImageResource(animalImages[randomCat]);
+
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+            params.width = screenWidth / columnCount; // Set width of the cat image based on column count
+            params.height = 100; // Set height of the cat image
+            params.setMargins(8, 8, 8, 8); // Set margins between cat images
+            catImageView.setLayoutParams(params);
+
+            // Apply animation to the cat image
+            Animation catAnimation = AnimationUtils.loadAnimation(this, R.anim.cat_animation);
+            catImageView.startAnimation(catAnimation);
+
+            catContainer.addView(catImageView);
+        }
+
+        // set the real number
+        realNumber = cnt;
+        updateButtonNames(realNumber);
+        updateScore();
+        startButtonAnimation();
+
+        // update the text view how_many_text_view
+        TextView howManyTextView = findViewById(R.id.how_many_text_view);
+        howManyTextView.setText("How many " + animalName + "s do you see?");
+
+
+
+
+
+    }
     private void generateRandomNumberOfCats() {
         catContainer.removeAllViews(); // Clear any existing cat images
         Random random = new Random();
@@ -104,8 +196,20 @@ public class MainGameActivity extends AppCompatActivity {
         catContainer.setRowCount(rowCount);
 
         for (int i = 0; i < numberOfCats; i++) {
+
+
+
             ImageView catImageView = new ImageView(this);
-            catImageView.setImageResource(R.drawable.cat);
+
+            // generate random number between 1 and size of animalImages array
+            int randomCat = random.nextInt(animalImages.length);
+            catImageView.setImageResource(animalImages[randomCat]);
+
+
+
+
+
+
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.width = screenWidth / columnCount; // Set width of the cat image based on column count
             params.height = 100; // Set height of the cat image
@@ -202,6 +306,7 @@ public class MainGameActivity extends AppCompatActivity {
 
             // Show the congratulations dialog
             showCongratsDialog();
+
         } else {
             score--;
             // Show the wrong answer dialog
@@ -223,7 +328,8 @@ public class MainGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 congratsDialog.dismiss();
-                generateRandomNumberOfCats();
+          if(score<=10)      generateRandomNumberOfCats();
+                else generateRandomAnimal();
 
             }
         });

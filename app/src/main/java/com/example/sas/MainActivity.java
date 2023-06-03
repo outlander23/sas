@@ -15,13 +15,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         getSupportActionBar().hide();
-        Button playButton = findViewById(R.id.play_button);
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.blink);
-        playButton.startAnimation(animation);
+
+        Button playMathButton = findViewById(R.id.play_math_button);
+        Button playSpeedButton = findViewById(R.id.play_speed_button);
         Button exitButton = findViewById(R.id.exit_button);
-exitButton.setOnClickListener(new View.OnClickListener(){
+
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.blink);
+        playMathButton.startAnimation(animation);
+
+        exitButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 finish();
@@ -29,19 +32,20 @@ exitButton.setOnClickListener(new View.OnClickListener(){
             }
         });
 
-
-        playButton.setOnClickListener(new View.OnClickListener(){
+        playMathButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, MainGameActivity.class);
-//                startActivity(intent);
                 Intent intent = new Intent(MainActivity.this, MainMathGame.class);
                 startActivity(intent);
-
             }
         });
 
-
-
+        playSpeedButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainGameActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

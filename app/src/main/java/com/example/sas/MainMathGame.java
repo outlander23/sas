@@ -84,6 +84,12 @@ public class MainMathGame extends AppCompatActivity {
         number2 = random.nextInt(10);
         int signIndex = random.nextInt(3);
 
+        if(number1 < number2){
+            int temp = number1;
+            number1 = number2;
+            number2 = temp;
+        }
+
         String sign;
         int operationResult;
 
