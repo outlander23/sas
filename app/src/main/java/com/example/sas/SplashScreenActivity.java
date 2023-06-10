@@ -28,7 +28,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 1; i <= 1; i++) {
+                for (int i = 1; i <= 100; i++) {
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {

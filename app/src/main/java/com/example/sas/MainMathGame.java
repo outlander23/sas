@@ -27,6 +27,7 @@ public class MainMathGame extends AppCompatActivity {
     private int number2;
     private int result;
 
+    private  int level;
     private int score;
     private Dialog congratsDialog;
     private Dialog wrongDialog;
@@ -40,12 +41,14 @@ public class MainMathGame extends AppCompatActivity {
         getSupportActionBar().hide();
 
         score = 0;
+        level = 1;
         number1TextView = findViewById(R.id.number1TextView);
         signTextView = findViewById(R.id.operatorTextView);
         number2TextView = findViewById(R.id.number2TextView);
         resultEditText = findViewById(R.id.resultEditText);
         checkButton = findViewById(R.id.checkButton);
         scoreTextView = findViewById(R.id.score_text_view);
+
 
         updateScore(); // Update the scoreTextView with the initial score
 
@@ -113,9 +116,9 @@ public class MainMathGame extends AppCompatActivity {
 
         result = operationResult;
 
-        number1TextView.setText(String.valueOf(number1));
+        number1TextView.setText(String.valueOf(number2));
         signTextView.setText(sign);
-        number2TextView.setText(String.valueOf(number2));
+        number2TextView.setText(String.valueOf(number1));
         resultEditText.setText("");
     }
 
@@ -133,7 +136,7 @@ public class MainMathGame extends AppCompatActivity {
             } else {
                 // Incorrect answer
                 showWrongDialog();
-                score = 0;
+                score--;
                 updateScore();
             }
 

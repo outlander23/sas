@@ -19,6 +19,7 @@ import java.util.Random;
 
 public class MainGameActivity extends AppCompatActivity {
 
+    private int level;
     private int realNumber;
     private int score;
     private Dialog congratsDialog;
@@ -71,6 +72,8 @@ public class MainGameActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main_game);
         getSupportActionBar().hide();
+
+        level = 1;
 
         catContainer = findViewById(R.id.cat_container);
         scoreTextView = findViewById(R.id.score_text_view);
@@ -127,7 +130,7 @@ public class MainGameActivity extends AppCompatActivity {
     private  void generateRandomAnimal(){
         catContainer.removeAllViews();
         Random random = new Random();
-        int nums = random.nextInt(10) ;
+        int nums = random.nextInt(level*10) ;
         // get the name of the animal
         String animalName = animalNames[nums];
         // get the image of the animal
@@ -186,10 +189,13 @@ public class MainGameActivity extends AppCompatActivity {
     private void generateRandomNumberOfCats() {
         catContainer.removeAllViews(); // Clear any existing cat images
         Random random = new Random();
-        int numberOfCats = random.nextInt(10) + 1; // Generate a random number between 1 and 10
+        int numberOfCats = random.nextInt(level*10) + 1; // Generate a random number between 1 and 10
 
         int screenWidth = getResources().getDisplayMetrics().widthPixels;
-        int columnCount = screenWidth / 100; // Calculate the number of columns based on image width
+
+        // max 1 or screen width / 100
+
+        int columnCount = (screenWidth) / 100; // Calculate the number of columns based on image width
         int rowCount = (int) Math.ceil((double) numberOfCats / columnCount); // Calculate the number of rows needed
 
         catContainer.setColumnCount(columnCount);
@@ -303,8 +309,10 @@ public class MainGameActivity extends AppCompatActivity {
         if (chosenNumber == realNumber) {
             // Increase the score if the chosen number is correct
             score++;
-
+            // update level
+            TextView levelTextView = findViewById(R.id.level);
             // Show the congratulations dialog
+            levelTextView.setText("Level: " + ((score/10)+1));
             showCongratsDialog();
 
         } else {
@@ -328,7 +336,7 @@ public class MainGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 congratsDialog.dismiss();
-          if(score<=10)      generateRandomNumberOfCats();
+          if(score<10)      generateRandomNumberOfCats();
                 else generateRandomAnimal();
 
             }

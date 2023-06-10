@@ -113,5 +113,16 @@
             app:layout_constraintEnd_toEndOf="@+id/cat_container_rectangle"
             app:layout_constraintStart_toStartOf="@+id/cat_container_rectangle" android:layout_marginTop="28dp"
             app:layout_constraintBottom_toTopOf="@+id/button_container"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level: 1"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:id="@+id/level" tools:layout_editor_absoluteY="16dp"
+            app:layout_constraintStart_toEndOf="@+id/score_text_view" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.751"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
