@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg"
-        tools:context=".MainGameActivity">
+        tools:context=".MainGameActivity" >
 
 
     <FrameLayout
@@ -69,10 +69,7 @@
                     android:inputType="number"
                     android:textSize="48sp"
                     android:textColor="#000000"
-
-                    android:background="@drawable/drawing"
-
-
+                    android:background="@drawable/edittext_border"
                     android:layout_marginEnd="16dp"/>
         </LinearLayout>
     </FrameLayout>
@@ -104,6 +101,17 @@
             app:layout_constraintHorizontal_bias="0.141" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="16dp" app:layout_constraintBottom_toTopOf="@+id/cat_container_rectangle"
             app:layout_constraintVertical_bias="0.0"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level: 1"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:id="@+id/level1" tools:layout_editor_absoluteY="16dp"
+            app:layout_constraintStart_toEndOf="@+id/score_text_view" android:layout_marginStart="48dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

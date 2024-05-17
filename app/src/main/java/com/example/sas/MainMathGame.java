@@ -23,11 +23,12 @@ public class MainMathGame extends AppCompatActivity {
     private Button checkButton;
     private TextView scoreTextView;
     private Random random;
+    private int level;
     private int number1;
     private int number2;
     private int result;
 
-    private  int level;
+
     private int score;
     private Dialog congratsDialog;
     private Dialog wrongDialog;
@@ -86,6 +87,12 @@ public class MainMathGame extends AppCompatActivity {
         number1 = random.nextInt(10);
         number2 = random.nextInt(10);
         int signIndex = random.nextInt(3);
+        if(score<=15)signIndex = 2;
+        if(score<=10)signIndex = 1;
+        if(score<=5)signIndex = 0;
+
+
+
 
         if(number1 < number2){
             int temp = number1;
@@ -139,7 +146,8 @@ public class MainMathGame extends AppCompatActivity {
                 score--;
                 updateScore();
             }
-
+            TextView levelTextView = findViewById(R.id.level1);
+            levelTextView.setText("Level " + ((level/5)+1));
             generateQuestion();
         } else {
             Toast.makeText(this, "Please enter your answer", Toast.LENGTH_SHORT).show();

@@ -13,5 +13,7 @@
     <color name="secondaryColor">#9310AA</color>
     <color name="tertiaryColor">#4CAF50</color>
 
-
+    <color name="button_pressed_color">#FF5722</color>
+    <color name="button_focused_color">#FF9800</color>
+    <color name="button_normal_color">#2196F3</color>
 </resources>

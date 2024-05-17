@@ -32,13 +32,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        playMathButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainMathGame.class);
-                startActivity(intent);
-            }
-        });
+
 
         playSpeedButton.setOnClickListener(new View.OnClickListener(){
             @Override
