@@ -51,7 +51,8 @@
                 android:value="" />
         </activity>
 
-
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".AboutActivity" />
     </application>
 
 </manifest>
