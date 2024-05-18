@@ -29,6 +29,7 @@ public class MainMathGame extends AppCompatActivity {
     private int result;
 
 
+
     private int score;
     private Dialog congratsDialog;
     private Dialog wrongDialog;
@@ -147,7 +148,7 @@ public class MainMathGame extends AppCompatActivity {
                 updateScore();
             }
             TextView levelTextView = findViewById(R.id.level1);
-            levelTextView.setText("Level " + ((level/5)+1));
+            levelTextView.setText("Level " +level);
             generateQuestion();
         } else {
             Toast.makeText(this, "Please enter your answer", Toast.LENGTH_SHORT).show();

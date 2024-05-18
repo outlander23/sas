@@ -36,6 +36,8 @@ public class MainGameActivity extends AppCompatActivity {
     private MediaPlayer correctSound;
     private MediaPlayer wrongSound;
     private ImageButton soundToggleButton;
+
+
     private boolean isSoundOn = true;
 
     private String[] animalNames = {
@@ -166,7 +168,7 @@ public class MainGameActivity extends AppCompatActivity {
         int guessedNumber = Integer.parseInt(clickedButton.getText().toString());
 
         if (guessedNumber == realNumber) {
-            score += 10;
+            score += 1;
             scoreTextView.setText("Score: " + score);
             scoreTextView.startAnimation(scoreTextAnimation);
             correctSound.start();
@@ -176,7 +178,7 @@ public class MainGameActivity extends AppCompatActivity {
             wrongDialog.show();
         }
 
-        level++;
+       if(score%5==0) level++;
         entityRecyclerView.startAnimation(levelTransitionAnimation);
         generateRandomEntities();
     }

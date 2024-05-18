@@ -19,37 +19,53 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="This game is developed by the Example Company."
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="8dp" />
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Developer: John Doe"
+            android:text="Developers:"
             android:textSize="18sp"
             android:textColor="@android:color/white"
             android:layout_marginBottom="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S.M.MILOY"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saide Mohammed Sourav Sarker"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="4dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email: john.doe@example.com"
+            android:text="Md Shahinur Parvez Likhan"
             android:textSize="18sp"
             android:textColor="@android:color/white"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="4dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Website: www.example.com"
+            android:text="Md Rakibul Islam"
             android:textSize="18sp"
             android:textColor="@android:color/white"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Md Habibur Miah"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="16dp" />
 
         <!-- Add more details about the developer as needed -->
 
