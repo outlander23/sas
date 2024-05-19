@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Button helpButton = findViewById(R.id.help_button);
         Button aboutButton = findViewById(R.id.about_button);
         Button exitButton = findViewById(R.id.exit_button);
+        Button mathGame = findViewById(R.id.math_game_button);
 
         Animation blinkAnimation = AnimationUtils.loadAnimation(this, R.anim.blink);
         playButton.startAnimation(blinkAnimation);
@@ -37,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, HelpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mathGame.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainMathGame.class);
                 startActivity(intent);
             }
         });

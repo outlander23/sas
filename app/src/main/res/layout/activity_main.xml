@@ -30,12 +30,27 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
+    <!-- Math Game Button -->
+    <Button
+        android:id="@+id/math_game_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/play_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_background"
+        android:padding="16dp"
+        android:text="Math"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
     <!-- Help Button -->
     <Button
         android:id="@+id/help_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/play_button"
+        android:layout_below="@id/math_game_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_background"

@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,8 @@ public class MainGameActivity extends AppCompatActivity {
     private RecyclerView entityRecyclerView;
     private TextView scoreTextView;
     private TextView levelTextView;
+    private TextView questionText;
+
     private Button button1, button2, button3;
     private Animation buttonAnimation, scoreTextAnimation, levelTransitionAnimation;
     private MediaPlayer backgroundMusic;
@@ -37,12 +40,13 @@ public class MainGameActivity extends AppCompatActivity {
     private MediaPlayer wrongSound;
     private ImageButton soundToggleButton;
 
+    private ImageView questionImage;
 
     private boolean isSoundOn = true;
 
     private String[] animalNames = {
             "cat", "dog", "elephant", "giraffe", "lion", "monkey", "panda", "pig", "rabbit", "sheep",
-            "american", "fox", "otter", "wolf"
+            "fox", "otter", "wolf", "american"
     };
 
     private int[] animalImages = {
@@ -71,6 +75,8 @@ public class MainGameActivity extends AppCompatActivity {
         button2 = findViewById(R.id.button_2);
         button3 = findViewById(R.id.button_3);
         soundToggleButton = findViewById(R.id.sound_toggle_button);
+        questionText = findViewById(R.id.how_many_text_view);
+        questionImage = findViewById(R.id.currtentanimaltext);
 
         buttonAnimation = AnimationUtils.loadAnimation(this, R.anim.button_animation);
         scoreTextAnimation = AnimationUtils.loadAnimation(this, R.anim.score_text_animation);
@@ -129,8 +135,9 @@ public class MainGameActivity extends AppCompatActivity {
             }
         }
 
+        questionImage.setImageResource(targetAnimalImage);
         realNumber = countOfTargetAnimal;
-
+        questionText.setText("How many " + targetAnimalName.toUpperCase() + " do you see?");
         EntityAdapter adapter = new EntityAdapter(this, entityImages);
         entityRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         entityRecyclerView.setAdapter(adapter);
@@ -172,13 +179,15 @@ public class MainGameActivity extends AppCompatActivity {
             scoreTextView.setText("Score: " + score);
             scoreTextView.startAnimation(scoreTextAnimation);
             correctSound.start();
-            congratsDialog.show();
+            if (score % 5 == 0) {
+                congratsDialog.show();
+                level++;
+            }
         } else {
             wrongSound.start();
             wrongDialog.show();
         }
 
-       if(score%5==0) level++;
         entityRecyclerView.startAnimation(levelTransitionAnimation);
         generateRandomEntities();
     }
