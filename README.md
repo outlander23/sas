@@ -1,9 +1,10 @@
-# MathQuest
+<img width="1910" height="1031" alt="image" src="https://github.com/user-attachments/assets/2f16ac2d-eadd-4166-93e8-c385b4305a62" /># MathQuest
 
 **MathQuest** is an interactive **Android math learning game** designed for children aged **4–10**.  
 It combines **counting, basic math skills, and engaging animations** to make learning fun and interactive.
 
 ---
+<img width="1910" height="1031" alt="image" src="https://github.com/user-attachments/assets/1b74af81-967c-47d1-a229-514a1410a7ca" />
 
 ## 🎯 Overview
 
