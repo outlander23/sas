@@ -73,15 +73,3 @@ It combines **counting, basic math skills, and engaging animations** to make lea
 - **UI Design:** Custom layouts with animations  
 
 ---
-
-## 📹 Demo & Links
-
-- **Demo Video:** [Watch Here](https://bit.ly/3A1uf1Q)  
-- **More Info:** [Link 1](http://bit.ly/2TyoMsr) | [Link 2](http://bit.ly/2TtBDfr)  
-
----
-
-## 👥 Credits
-
-Developed by **BRUR Kuhelika** team.  
-Template by **Slidesgo**, icons by **Flaticon**, images by **Freepik**.  
